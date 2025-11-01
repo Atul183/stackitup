@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Stack It Up | Git and GitHub Tutorial</title>
+
+  <!--Meta For No Index-->
+  <meta name="robots" content="noindex, Nofollow, Noimageindex">
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <!-- Theme Stylesheet -->
+  <!-- This link assumes "css/style.css" exists in the same directory structure as your original file -->
+  <link href="css/style.css" rel="stylesheet" />
+
+  <!--Favicon-->
+  <!-- These links assume "images/favicon.svg" exists in your local "images" folder -->
+  <link rel="shortcut icon" href="images/favicon.svg" type="image/x-icon" />
+  <link rel="icon" href="images/favicon.svg" type="image/x-icon" />
+
+  <!-- Syntax Highlighting CSS (Updated to local path) -->
+  <link rel="stylesheet" href="css/github-dark.min.css">
+  <style>
+    /* Custom style for highlight.js to fit the blog */
+    .hljs {
+      padding: 1.25em;
+      border-radius: 8px;
+      line-height: 1.6;
+      font-family: 'Menlo', 'Consolas', monospace;
+      font-size: 0.9em;
+    }
+    /* Style for inline code */
+    code:not(pre > code) {
+      background-color: #f1f1f1;
+      padding: 0.2em 0.4em;
+      border-radius: 4px;
+      font-size: 0.9em;
+      color: #c7254e; /* A reddish color to stand out */
+      font-family: 'Menlo', 'Consolas', monospace;
+    }
+    /* Adding some space for headings inside the article */
+    .single-blog h3 {
+      margin-top: 2.5rem;
+    }
+    .single-blog h4 {
+      margin-top: 1.5rem;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Navbar Start -->
+<nav class="main-nav navbar navbar-expand-lg">
+  <div class="container">
+    <!-- Logo -->
+    <a class="navbar-brand" href="index.html">
+      <!-- This link assumes "images/logo.svg" exists in your local "images" folder -->
+      <img class="logo-main" src="images/logo3.jpg" alt="logo" />
+    </a>
+    <!-- Toogle Button -->
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#mainNav">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <div class="collapse navbar-collapse nav-list" id="mainNav">
+      <!-- Navigation Links -->
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">About </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">Contact</a>
+        </li>
+      </ul>
+      <!-- Social Link -->
+      <ul class="main-nav-social">
+        <li>
+          <a href="#"><i class="fa fa-facebook"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fa fa-instagram"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- Navbar End -->
+
+<section class="blog-single">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-2 order-2 order-lg-1">
+        <!-- Share Section from original template -->
+        <div class="share-now">
+          <a href="#" class="scrol">Share</a>
+          <div class="sociel-icon">
+            <ul>
+              <li> <a href="#"><i class="fa fa-facebook"></i></a></li>
+              <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li> <a href="#"><i class="fa fa-instagram"></i></a></li>
+              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-10 order-1 order-lg-2">
+        <!-- Article content replaced with video summary -->
+        <article class="single-blog">
+          <a href="#" class="tag">Technology</a>
+          <p class="title">Git and GitHub for DevOps: A Complete Tutorial</p>
+          <ul class="meta">
+            <li>By <a href="#">Atul Kumar</a></li>
+            <li>
+              <i class="fa fa-clock-o"></i>
+              November 01, 2025
+            </li>
+          </ul>
+          
+		 <!--
+          <p><strong>Overview:</strong> This tutorial adapts and expands the "Complete Git and GitHub Tutorial" video into a structured DevOps blog post. It covers Git fundamentals, typical workflows, branching and collaboration on GitHub, pull requests, integration with CI/CD, and best practices for teams and automation. Use this as a hands-on guide you can follow from installation to contributing to open source and production workflows.</p>
+		-->
+          <h3>1. What Git and GitHub are</h3>
+          <p>Git is a distributed version control system used to track changes in files, collaborate, and manage history locally and across teams. <em>(Source: GeeksForGeeks, W3School)</em>. Use Git for branching, staging changes, and creating commit history. <em>(Source: GeeksForGeeks)</em>.</p>
+          <p>GitHub is a cloud hosting service built on Git that adds collaboration features: remote repositories, pull requests, issue tracking, actions (CI/CD), and code review interfaces. <em>(Source: YouTube, GeeksForGeeks)</em>.</p>
+          <p><em>Sources used for foundational descriptions: the tutorial video and general guides (YouTube, GeeksForGeeks, W3School).</em></p>
+			<!-- Placeholder image matching the blog theme -->
+          <img src="images/blog/git4.png" alt="Git and GitHub Tutorial Banner">
+          <h3>2. Setup and installation</h3>
+          <h4>Supported platforms</h4>
+          <p>macOS, Linux, Windows. Installers and package managers are available: Homebrew (macOS), apt/yum (Linux), Git for Windows (includes Git Bash).</p>
+          <h4>Quick install (commands)</h4>
+          <pre><code class="language-bash"># macOS (Homebrew)
+brew install git
+
+# Ubuntu/Debian
+sudo apt update
+sudo apt install git
+
+# Windows
+# Download Git for Windows installer and enable Git Bash.
+</code></pre>
+          <h4>First-time setup</h4>
+          <p>Set identity (local machine):</p>
+          <pre><code class="language-bash">git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+</code></pre>
+          <p>Configure helpful defaults:</p>
+          <pre><code class="language-bash">git config --global core.editor "code --wait" # (or your editor)
+git config --global color.ui auto
+</code></pre>
+
+          <h3>3. Core Git concepts and local workflow</h3>
+          <h4>Repository basics</h4>
+          <ul>
+            <li>Initialize a repo: <code>git init</code></li>
+            <li>Clone a remote: <code>git clone &lt;repo-url&gt;</code></li>
+          </ul>
+          <h4>Working areas</h4>
+          <ul>
+            <li><b>Working Directory:</b> where you edit files.</li>
+            <li><b>Staging Area (index):</b> where you prepare changes for commit.</li>
+            <li><b>Local Repository:</b> where commits (history) are stored.</li>
+          </ul>
+          <h4>Typical local workflow (commands)</h4>
+          <ul>
+            <li>Check status: <code>git status</code></li>
+            <li>See differences: <code>git diff</code> (unstaged) or <code>git diff --staged</code> (staged)</li>
+            <li>Stage changes: <code>git add &lt;file&gt;</code> or <code>git add .</code></li>
+            <li>Commit: <code>git commit -m "Clear, descriptive message"</code></li>
+            <li>Amend last commit (local only): <code>git commit --amend --no-edit</code></li>
+          </ul>
+          <h4>Commit message guidance</h4>
+          <ul>
+            <li>Use imperative mood: "Add login validation"</li>
+            <li>Keep subject ˜ 50 characters; leave a blank line then details if needed.</li>
+          </ul>
+          <p><em>Reference for basic Git usage and workflows: tutorial and guides (YouTube, W3School).</em></p>
+
+          <h3>4. Branching and merging (practical DevOps patterns)</h3>
+          <h4>Creating and switching branches</h4>
+          <ul>
+            <li>Create: <code>git branch feature/awesome</code></li>
+            <li>Switch: <code>git checkout feature/awesome</code> or <code>git switch feature/awesome</code></li>
+            <li>Create + switch: <code>git checkout -b feature/awesome</code></li>
+          </ul>
+          <h4>Merge vs Rebase (when to use)</h4>
+          <ul>
+            <li><b>Merge:</b> preserves history as graph; good for feature integration and team contexts.</li>
+            <li><b>Rebase:</b> linearizes history; useful for local cleanups and before merging to main.</li>
+          </ul>
+          <p>Workflow example (feature branch -> main):</p>
+          <pre><code class="language-bash">git checkout main
+git pull
+git checkout feature/awesome
+git rebase main
+# Resolve conflicts, then:
+git checkout main
+git merge feature/awesome
+</code></pre>
+          <h4>Deleting branches</h4>
+          <ul>
+            <li>Local: <code>git branch -d feature/awesome</code></li>
+            <li>Remote: <code>git push origin --delete feature/awesome</code></li>
+          </ul>
+          <p><em>Branching and merging are core collaborative patterns emphasized in the source tutorial and best-practice guides (YouTube, GeeksForGeeks).</em></p>
+
+          <h3>5. Remotes and GitHub collaboration</h3>
+          <h4>Basic remote commands</h4>
+          <ul>
+            <li>Add remote: <code>git remote add origin &lt;url&gt;</code></li>
+            <li>View remotes: <code>git remote -v</code></li>
+            <li>Push local to remote: <code>git push -u origin main</code></li>
+            <li>Pull updates: <code>git pull</code></li>
+            <li>Fetch updates without merge: <code>git fetch</code></li>
+          </ul>
+          <h4>Forks, clones, and contribution model</h4>
+          <p>Forking is common for open source: fork the repo on GitHub, clone your fork, create branches, push to your fork, and open a pull request against upstream. <em>(Source: YouTube)</em>.</p>
+          <p>For internal teams, create branches in shared repo and use pull requests for review.</p>
+          <h4>Pull requests (PRs)</h4>
+          <p>Create PR on GitHub web UI: choose base (target) and compare (feature) branches.</p>
+          <p>PR checklist for maintainers:</p>
+          <ul>
+            <li>Clear description and linked issue</li>
+            <li>Small, single-purpose changes</li>
+            <li>Passing CI and tests</li>
+            <li>Reviewers assigned and approvals collected</li>
+          </ul>
+          <p>Use PR templates and issue templates in repo to standardize contributions.</p>
+          <p><em>GitHub-specific collaboration flow and PR best practices are covered in the original tutorial and extended here (YouTube).</em></p>
+
+          <h3>6. GitHub features that accelerate DevOps</h3>
+          <h4>Issues and project boards</h4>
+          <ul>
+            <li>Use issues for tasks/bugs; label and assign.</li>
+            <li>Project boards (Kanban) help visualize progress.</li>
+          </ul>
+          <h4>Actions (CI/CD)</h4>
+          <ul>
+            <li>GitHub Actions triggers: <code>push</code>, <code>pull_request</code>, <code>schedule</code>.</li>
+            <li>Typical workflow: Build and test, Lint and static analysis, Run deploy step on successful main merges.</li>
+            <li>Store secrets in repository settings for secure deployment.</li>
+          </ul>
+          <h4>Releases and tags</h4>
+          <ul>
+            <li>Annotated tag: <code>git tag -a v1.0.0 -m "Release 1.0.0"</code></li>
+            <li>Push tags: <code>git push origin v1.0.0</code></li>
+          </ul>
+          <p>Use GitHub Releases to attach binaries and changelogs.</p>
+          <p><em>These features are powerful for automating testing and deployment pipelines in a DevOps lifecycle (YouTube).</em></p>
+
+          <h3>7. Branch protection, code review, and CI/CD policies</h3>
+          <ul>
+            <li>Protect main branches: require PR reviews, passing status checks, and up-to-date branch before merging.</li>
+            <li>Enforce signed commits or commit signing for stricter audit trails.</li>
+            <li>Automate checks: linters, unit tests, security scans (SAST), dependency checks.</li>
+          </ul>
+          <p>Applying branch protection and CI gates forms the backbone of accountable and safe deployments in production.</p>
+
+          <h3>8. Advanced topics for DevOps engineers</h3>
+          <h4>Git hooks (local and server-side)</h4>
+          <ul>
+            <li>Client hooks: <code>pre-commit</code>, <code>commit-msg</code> for linting and enforcing commit style.</li>
+            <li>Server hooks: <code>pre-receive</code> hooks for policy enforcement.</li>
+          </ul>
+          <h4>Large files and monorepos</h4>
+          <ul>
+            <li>Use Git LFS for large binaries; avoids bloating history.</li>
+            <li>For monorepos, consider sparse checkouts and careful CI optimization.</li>
+          </ul>
+          <h4>Submodules and subtrees</h4>
+          <ul>
+            <li>Submodules keep external repos as subfolders; manage with <code>git submodule add/update</code>.</li>
+            <li>Subtrees can be simpler alternative for vendor code.</li>
+          </ul>
+          <h4>Handling merge conflicts at scale</h4>
+          <ul>
+            <li>Use three-way merges, avoid huge long-lived branches, rebase frequently to keep conflicts small.</li>
+            <li>Use tooling (merge drivers, GUI tools) to resolve complicated conflicts.</li>
+          </ul>
+
+          <h3>9. Troubleshooting and recovery</h3>
+          <ul>
+            <li>Undo local changes: <code>git checkout -- &lt;file&gt;</code> (discard unstaged) or <code>git reset HEAD &lt;file&gt;</code> (unstage)</li>
+            <li>Revert commits: <code>git revert &lt;commit&gt;</code> (create new commit that undoes)</li>
+            <li>Reset (dangerous for shared history): <code>git reset --hard &lt;commit&gt;</code></li>
+            <li>Recover deleted branch: <code>git reflog</code> to find commit; <code>git checkout -b recovered &lt;commit&gt;</code></li>
+          </ul>
+          <p><em>Include safe guidelines: prefer revert over reset on published history.</em></p>
+
+          <h3>10. Best practices and workflow recommendations</h3>
+          <ul>
+            <li>Keep commits small and focused; one logical change per commit.</li>
+            <li>Write clear commit messages with a short subject and optional body.</li>
+            <li>Use protected branches and PR reviews to ensure code quality.</li>
+            <li>Run CI on every PR and require passing checks before merge.</li>
+            <li>Use feature flags and incremental rollouts for risky changes.</li>
+            <li>Automate releases and changelogs when possible.</li>
+          </ul>
+          <p><em>These recommendations synthesize the tutorial's approach and common industry practices (YouTube, GeeksForGeeks).</em></p>
+
+          <h3>11. Cheat sheet (most-used commands)</h3>
+          <pre><code class="language-bash">git clone &lt;url&gt;
+git status
+git add &lt;file&gt;
+git commit -m "message"
+git pull
+git push
+git checkout -b &lt;branch&gt;
+git merge &lt;branch&gt;
+git rebase &lt;branch&gt;
+git tag -a vX.Y.Z -m "release"
+</code></pre>
+        </article>
+        
+        <!-- Presentation (Prev/Next) Section from original template -->
+        <div class="blog-single-presentation">
+          <ul>
+            <li> <a href="#" class="tag">PREVIOUS</a>
+              <a href="#" class="title">Placeholder: Previous Post Title</a>
+              <i class="fa fa-clock-o"></i>
+              October 19, 2020 - 2 min
+            </li>
+            <li> <a href="#" class="tag">Next</a><a href="#" class="title">Placeholder: Next Post Title</a><i class="fa fa-clock-o"></i>
+              October 19, 2020 - 2 min</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Instagram Section from original template -->
+<section class="instagram">
+  <a href="#">
+    <i class="fa fa-instagram" aria-hidden="true"></i>
+    <span>@Stack_It_Up</span>
+  </a>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="instagram-item">
+
+          <div class="instagram-item-thum">
+            <img src="images/blog/jenkins.png" alt="image">
+          </div>
+          <div class="instagram-item-thum">
+            <img src="images/blog/aws.png" alt="image">
+          </div>
+          <div class="instagram-item-thum">
+            <img src="images/blog/docker2.png" alt="image">
+          </div>
+          <div class="instagram-item-thum">
+            <img src="images/blog/kuberenetes.png" alt="image">
+          </div>
+          <div class="instagram-item-thum">
+            <img src="images/blog/azure.png" alt="image">
+          </div>
+          <div class="instagram-item-thum">
+            <img src="images/blog/ansible.jpg" alt="image">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer Section from original template -->
+<section class="footer">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-6 mx-auto text-center">
+        <div class="footer-logo">
+          <!-- This link assumes "images/logo.svg" exists in your local "images" folder -->
+          <img src="images/logo.svg" alt="logo" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 mx-auto">
+        <div class="footer-nav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 mx-auto">
+        <div class="sociale-icon">
+          <ul>
+            <li>
+              <a href="#"><i class="fa fa-facebook"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-twitter"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-instagram"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="copy-right">
+          <p>© Copyright <span id="copyrightYear"></span> - All Rights Reserved by <a href="https://staticmania.com/" target="_blank">StaticMania</a> Distributed By <a href="https://themewagon.com/" target="blank">ThemeWagon</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JS links from original template -->
+<!-- Google Map -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9rV6yesIygoVKTD6QLf_iCa9eiIIHqZ0&libraries=geometry">
+</script>
+<!-- Vendor JS -->
+<!-- These links assume these files exist in your local "vendor" folder -->
+<script src="vendor/jQuery/jquery.min.js"></script>
+<script src="vendor/bootstrap/bootstrap.min.js"></script>
+<script src="vendor/slick/slick.min.js"></script>
+<script src="vendor/g-map/gmap.js"></script>
+<!-- Main JS -->
+<!-- This link assumes "js/script.js" exists in your local "js" folder -->
+<script src="js/script.js"></script>
+
+<!-- Syntax Highlighting JS (Updated to local paths) -->
+<script src="vendor/highlight/highlight.min.js"></script>
+<!-- Load specific languages for highlighting -->
+<script src="vendor/highlight/languages/bash.min.js"></script>
+<script>
+  // Initialize highlight.js
+  // We are at the end of the body, so the DOM is ready
+  // and hljs should be defined from the script above.
+  try {
+    hljs.highlightAll();
+  } catch (e) {
+    console.error("Failed to initialize highlight.js:", e);
+  }
+</script>
+</body>
+
+</html>
+
