@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Stack It Up | GitHub Actions: Automate Everything</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <!-- 
+    CRITICAL: This file now relies on the following local files being present:
+    1. css/style.css (for Bootstrap framework and core blog layout/typography)
+    2. css/github-dark.min.css (for code highlighting theme)
+    3. vendor/jQuery/jquery.min.js
+    4. vendor/bootstrap/bootstrap.min.js
+    5. vendor/highlight/highlight.min.js (and its language modules)
+    6. js/script.js (for custom functionality, navbar toggle, etc.)
+  -->
+  
+  <!-- Theme Stylesheet (Local) -->
+  <link href="css/style.css" rel="stylesheet" />
+  
+  <!-- Syntax Highlighting CSS (Local) -->
+  <link rel="stylesheet" href="css/github-dark.min.css">
+  
+  <!-- Font Awesome Icons (Using CDN for wide compatibility of the FA icons used in the template) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <!-- The previous custom <style> block has been removed as per your request -->
+</head>
+
+<body>
+
+<!-- Navbar Start -->
+<nav class="main-nav navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <img class="logo-main" src="images/logo3.jpg" alt="logo" />
+    </a>
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <div class="collapse navbar-collapse nav-list" id="mainNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">About </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">Contact</a>
+        </li>
+      </ul>
+      <ul class="main-nav-social">
+        <!-- Social icons mockup -->
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- Navbar End -->
+
+<section class="blog-single">
+  <div class="container">
+    <div class="row">
+      <!-- Article Content: col-lg-10 -->
+      <div class="col-lg-10 order-1 order-lg-2">
+        <article class="single-blog">
+          <a href="#" class="tag">CI/CD</a>
+          <h1 class="title">⚙️ Automate Everything: A Beginner's Guide to GitHub Actions</h1>
+          <ul class="meta list-inline">
+            <li class="list-inline-item">By <a href="#">Atul Kumar</a></li>
+            <li class="list-inline-item">
+              <i class="fa fa-clock-o"></i>
+              November 07, 2025
+            </li>
+          </ul>
+          
+          <img src="images/blog/githubactions.png" alt="GitHub Actions Tutorial Banner" onerror="this.onerror=null; this.src='https://placehold.co/1000x400/007bff/ffffff?text=GitHub+Actions+Tutorial+Placeholder';">
+
+          <p>
+            GitHub Actions is a powerful, integrated platform for automating your software workflows directly within your repository. This platform allows you to implement Continuous Integration (CI) and Continuous Delivery (CD), bringing core DevOps practices into the development lifecycle.
+          </p>
+		  
+          <!-- Content from the GitHub Actions tutorial -->
+
+          <h3>1. Core Concepts: The GitHub Actions Vocabulary</h3>
+          <p>
+            Understanding the terminology is the first step toward writing effective automation pipelines.
+          </p>
+
+          <ul>
+            <li><b>Workflow:</b> The full automated process, defined in a <code>.yml</code> file. It's the entire pipeline (e.g., "Build, Test, and Deploy").</li>
+            <li><b>Event:</b> The specific activity that triggers a workflow (e.g., a <code>push</code> to a branch, a <code>pull_request</code>, or a manual <code>workflow_dispatch</code>).</li>
+            <li><b>Job:</b> A set of steps that execute on a single **Runner** machine. Jobs can run in parallel or sequentially.</li>
+            <li><b>Step:</b> An individual task within a job. A step either runs a shell command (<code>run</code>) or executes a reusable **Action** (<code>uses</code>).</li>
+            <li><b>Action:</b> A reusable unit of code, often sourced from the GitHub Marketplace, that performs a complex task (e.g., setting up Python, deploying to AWS).</li>
+            <li><b>Runner:</b> The virtual machine (VM) that executes the workflow, usually provided by GitHub (e.g., <code>ubuntu-latest</code>).</li>
+          </ul>
+
+          <h3>2. Hands-On Practice: The Linter Workflow</h3>
+          <p>
+            We will create a foundational **Continuous Integration (CI)** pipeline to automatically check code quality using the Python linter, **Flake8**, whenever code is pushed.
+          </p>
+
+          <h4>Step 1: The Sample Files</h4>
+          <p>
+            Create two files in your repository: <code>sample_script.py</code> (intentionally flawed) and <code>requirements.txt</code>.
+          </p>
+          
+          <p><code>sample_script.py</code> (Flawed Code)</p>
+          <pre><code class="language-python"># sample_script.py
+    
+def calculate_sum ( a, b ) :
+    # This code has linting errors (extra spaces, missing docstring).
+    c = a + b
+    return c
+
+print(calculate_sum(5, 10))
+          </code></pre>
+          
+          <p><code>requirements.txt</code></p>
+          <pre><code class="language-text">flake8
+          </code></pre>
+
+          <h4>Step 2: Define the CI Workflow</h4>
+          <p>
+            Create the file <code>.github/workflows/ci_linter.yml</code> to define the automated process. This YAML file is the heart of your workflow, and here is a detailed breakdown of each major component:
+          </p>
+
+          <p>
+            <b>1. Workflow Name:</b> <code>name: Python Code Quality Check (Linter)</code><br>
+            Sets the display name for the workflow in the GitHub Actions tab.
+          </p>
+          <p>
+            <b>2. Event Trigger:</b> <code>on: ...</code><br>
+            Defines the **Event** that triggers the run. It runs every time code is <code>push</code>ed to the <code>main</code> branch, or if triggered manually (<code>workflow_dispatch</code>).
+          </p>
+          <p>
+            <b>3. Jobs:</b> <code>jobs: run-linter: ...</code><br>
+            Defines a single **Job** named <code>run-linter</code>. All steps below execute as part of this job.
+          </p>
+          <p>
+            <b>4. Runner:</b> <code>runs-on: ubuntu-latest</code><br>
+            Specifies the **Runner** (virtual machine) environment. <code>ubuntu-latest</code> is a reliable, GitHub-hosted Linux environment where the commands will execute.
+          </p>
+          <p>
+            <b>5. Steps:</b> The sequence of tasks the runner will execute:
+            <ul>
+              <li>
+                <b>Step 1: Checkout repository code</b> (<code>uses: actions/checkout@v4</code>) – This is an **Action** that downloads your repository code onto the runner machine so subsequent steps can access the files.
+              </li>
+              <li>
+                <b>Step 2: Set up Python environment</b> (<code>uses: actions/setup-python@v5</code>) – This **Action** sets up the necessary Python version environment (<code>python-version: '3.x'</code>) on the runner.
+              </li>
+              <li>
+                <b>Step 3: Install dependencies</b> (<code>run: pip install -r requirements.txt</code>) – This uses the shell command (<code>run</code>) to install the linter tool, `flake8`, listed in our `requirements.txt` file.
+              </li>
+              <li>
+                <b>Step 4: Run Flake8 Linter Check</b> (<code>run: flake8 .</code>) – This executes the actual linter command across the entire code base (`.`). If `flake8` finds errors, it exits with a non-zero code, causing the entire step and the job to **Fail**.
+              </li>
+            </ul>
+          </p>
+          
+          <p>Now, let's look at the full YAML file:</p>
+
+          <pre><code class="language-yaml"># .github/workflows/ci_linter.yml
+
+# 1. Workflow Name
+name: Python Code Quality Check (Linter)
+
+# 2. Event Trigger
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+# 3. Jobs
+jobs:
+  run-linter:
+    # 4. Runner
+    runs-on: ubuntu-latest
+    
+    # 5. Steps
+    steps:
+      - name: 1. Checkout repository code
+        uses: actions/checkout@v4
+        
+      - name: 2. Set up Python environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+          
+      - name: 3. Install dependencies
+        run: pip install -r requirements.txt
+        
+      - name: 4. Run Flake8 Linter Check
+        run: flake8 .
+          </code></pre>
+
+          <h4>Step 3: Run and Observe Failure</h4>
+          <p>
+            When you commit and push these files, the workflow will run and the "Run Flake8 Linter Check" step will **fail** because of the style errors in <code>sample_script.py</code>. This confirms the CI gate is working.
+          </p>
+
+          <h4>Step 4: Fix the Code and Rerun</h4>
+          <p>
+            Update <code>sample_script.py</code> locally to adhere to code standards:
+          </p>
+
+          <p><code>sample_script.py</code> (Fixed Code)</p>
+          <pre><code class="language-python"># sample_script.py
+
+def calculate_sum(a, b):
+    """Calculates the sum of two numbers."""
+    total = a + b
+    return total
+
+print(calculate_sum(5, 10))
+          </code></pre>
+          <p>
+            Commit and push the fix. The workflow will run again, and this time, all steps will **pass** successfully.
+          </p>
+
+          <h3>Summary</h3>
+          <p>
+            This simple setup provides the foundation for powerful DevOps automation. You can extend this workflow to include unit testing, security scans, or even full application deployment. GitHub Actions is your core tool for moving toward fully automated software delivery.
+          </p>
+        </article>
+        
+        <!-- Presentation (Prev/Next) Section -->
+        <div class="blog-single-presentation">
+          <ul class="list-inline">
+            <li class="list-inline-item"> 
+              <a href="#" class="tag">PREVIOUS</a>
+              <a href="#" class="title">Placeholder: Previous Post Title</a>
+              <i class="fa fa-clock-o"></i>
+              2 min read
+            </li>
+            <li class="list-inline-item"> 
+              <a href="#" class="tag">Next</a>
+              <a href="#" class="title">Placeholder: Next Post Title</a>
+              <i class="fa fa-clock-o"></i>
+              2 min read
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Share Section: col-lg-2 -->
+      <div class="col-lg-2 order-2 order-lg-1">
+        <div class="share-now">
+          <a href="#" class="scrol">Share</a>
+          <div class="sociel-icon">
+            <ul>
+              <li> <a href="#"><i class="fa fa-facebook"></i></a></li>
+              <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li> <a href="#"><i class="fa fa-instagram"></i></a></li>
+              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Instagram Section -->
+<section class="instagram">
+  <a href="#">
+    <i class="fa fa-instagram" aria-hidden="true"></i>
+    <span>@Stack_It_Up</span>
+  </a>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="instagram-item">
+          <!-- Mockup of the image grid -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer Section -->
+<section class="footer">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-6 mx-auto text-center">
+        <div class="footer-logo">
+          <!-- Text, relying on CSS for style -->
+          <span>Stack It Up</span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="copy-right">
+          <p>© Copyright <span id="copyrightYear">2025</span> - All Rights Reserved by <a href="#">DevOps Tutor</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JS Dependencies (Reverted to local paths) -->
+<script src="vendor/jQuery/jquery.min.js"></script>
+<script src="vendor/bootstrap/bootstrap.min.js"></script>
+
+<!-- Syntax Highlighting JS (Reverted to local paths) -->
+<script src="vendor/highlight/highlight.min.js"></script>
+<script src="vendor/highlight/languages/yaml.min.js"></script>
+<script src="vendor/highlight/languages/python.min.js"></script>
+
+<!-- Custom Script File (Local) -->
+<script src="js/script.js"></script>
+
+
+<script>
+  // Keeping minimal JS logic for dynamic year calculation, assuming other functionality is in script.js
+  window.onload = function() {
+      const yearSpan = document.getElementById('copyrightYear');
+      if (yearSpan) {
+          yearSpan.textContent = new Date().getFullYear();
+      }
+      // Note: Full initialization for Bootstrap, highlight.js, and custom features 
+      // are now expected to be handled by the scripts loaded above.
+  };
+</script>
+</body>
+</html>
